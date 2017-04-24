@@ -4,6 +4,9 @@ if &compatible
   set nocompatible
 endif
 
+" No sounds when esc in WSL (Windows Subsystem for Linux)
+set visualbell
+
 set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 if dein#load_state(expand('~/.cache/dein'))
   call dein#begin(expand('~/.cache/dein'))

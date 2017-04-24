@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# load Xresources
+userresources=$HOME/.Xresources
+if [ -f "$userresources" ]; then
+      xrdb -merge "$userresources" &
+fi
+
+# launch the wm
+{%@@ if profile == "home" @@%}
+exec awesome
+{%@@ elif profile == "office" @@%}
+exec bspwm
+{%@@ endif @@%}

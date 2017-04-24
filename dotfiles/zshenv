@@ -1,0 +1,11 @@
+path+=('/home/alfa/xiki-master/bin')
+export PATH
+drop='/home/alfa/Dropbox'
+prog=$drop'/programming'
+unc=$prog'/uncrumpled'
+ezs=$drop'/linux_scripts'
+export XDG_CONFIG_HOME=$HOME/.config
+alias p=python3
+alias sir="grep-nr -e" 
+alias si="grep -n -e" 
+#alias sip="grep -n --include=\*.py -e" 

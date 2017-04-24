@@ -1,0 +1,23 @@
+config:
+  backup: true
+  create: true
+  dotpath: dotfiles
+dotfiles:
+  f_init.vim:
+    dst: ~/.config/nvim/init.vim
+    src: config/nvim/init.vim
+  f_zshenv:
+    dst: ~/.zshenv
+    src: zshenv
+  f_zshrc:
+    dst: ~/.zshrc
+    src: zshrc
+profiles:
+  ubuntu:
+      - f_init.vim
+      - f_zshrc
+      - f_zshenv
+  wsl:
+      - f_init.vim
+      - f_zshrc
+      - f_zshenv

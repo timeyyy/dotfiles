@@ -1,0 +1,78 @@
+source ~/.zplug/init.zsh
+zplug "lib/theme-and-appearance", from:oh-my-zsh
+zplug "plugins/git",   from:oh-my-zsh, if:"(( $+commands[git] ))"
+zplug "plugins/git-extras",   from:oh-my-zsh
+zplug "plugins/python",   from:oh-my-zsh
+zplug "plugins/jump",   from:oh-my-zsh
+zplug "plugins/thefuck",   from:oh-my-zsh
+zplug "plugins/history-substring-search", from:oh-my-zsh
+zplug "themes/smt", from:oh-my-zsh
+
+# Set the priority when loading
+# e.g., zsh-syntax-highlighting must be loaded
+# after executing compinit command and sourcing other plugins
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+zplug load --verbose
+
+# Then, source plugins and add commands to $PATH
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH="$HOME/neovim/bin:$PATH"
+
+export PATH="$HOME/Downloads/appimages:$PATH"
+
+export PATH="$HOME/Documents/git/Nim/bin:$PATH"
+export PATH="$HOME/.nimble/bin:$PATH"
+
+alias v=nvim
+alias copy='xclip -selection clipboard'
+alias paste='xclip -selection clipboard -o'
+alias rm=trash
+alias sudo='sudo '
+alias py34='/home/alfa/.pythonz/pythons/CPython-3.4.4/bin/python'
+
+# For installing uncrumpled dependancies
+PROGLIB='/home/alfa/Documents/git'
+export PROGLIB
+
+# Python virtual env setup
+export WORKON_HOME=~/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3.5
+export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+source /usr/local/bin/virtualenvwrapper.sh
+
+# pip install User goes in here
+export PATH=~/.local/bin:$PATH
+
+# Haxe
+export HAXE_STD_PATH=/usr/lib/haxe/std:.
+export HAXE_HOME=/usr/lib/haxe
+export NEKOPATH=/usr/lib/neko
+# export PATH=$HAXEPATH:$NEKOPATH:$PATH
+# export LD_LIBRARY_PATH=$HAXEPATH:$NEKOPATH:$LD_LIBRARY_PATH
+#
+xmodmap ~/capstoesc
+
+# Persists and Share History
+HISTSIZE=9000
+if (( ! EUID )); then
+    HISTFILE=~/.history_root
+else
+    HISTFILE=~/.history
+fi
+SAVEHIST=9000
+setopt SHARE_HISTORY
+
+# added by Pew
+# source $(pew shell_config)
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/alfa/.sdkman"
+[[ -s "/home/alfa/.sdkman/bin/sdkman-init.sh" ]] && source "/home/alfa/.sdkman/bin/sdkman-init.sh"

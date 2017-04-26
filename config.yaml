@@ -13,7 +13,7 @@ dotfiles:
     dst: ~/.zshrc
     src: zshrc
 profiles:
-  ubuntu:
+  alfa-Vostro1510:
       - f_init.vim
       - f_zshrc
       - f_zshenv

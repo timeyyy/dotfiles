@@ -325,6 +325,7 @@ nnoremap <leader>r :tabnew %<cr>:te p %<CR>
 
 " C Language
 autocmd FileType c setlocal shiftwidth=2 tabstop=2 softtabstop=2
+
 "
 " Kivy Language
 au BufNewFile,BufRead *.kv set filetype=kivy
@@ -340,6 +341,8 @@ autocmd FileType kivy setlocal commentstring=#\ %s
 
 " Lua
 autocmd FileType lua setlocal shiftwidth=2 tabstop=2 softtabstop=2
+
+let g:neomake_lua_enabled_makers = []
 
 let g:langserver_executables = {
        \ 'go': {
@@ -392,29 +395,22 @@ endfunction
 
 nnoremap <silent> <leader>tm :call timer_start(1, 'Testextmark')<cr>
 
-"function! AddMarks()
-"    call nvim_buf_set_mark(0, 1, 1, 1, 1)
-"    call nvim_buf_set_mark(0, 1, 2, 1, 3)
-"    call nvim_buf_set_mark(0, 2, 1, 1, 1)
-"    call nvim_buf_set_mark(0, 2, 2, 1, 3)
-"    echo nvim_buf_get_next_markrange(0, 1, 1, 2)
-"endfunction
-
-"nnoremap <silent> <leader>emt :call AddMarks()<cr>
-
-highlight extmark ctermbg=Red guibg=Red
-" call nvim_init_tag_ns('myplugin')
+highlight exttag ctermbg=Red guibg=Red
+call nvim_init_tag_ns('myplugin')
 function! Testexttag(timer_id)
     let a:ns = 1
-    let a:all_marks = nvim_buf_get_mark_ids(0, a:ns)
+    " let a:all_tags = nvim_buf_get_tags(0, a:ns, -1, -1, -1, 0)
+    let a:all_tags = nvim_buf_get_tags(0, a:ns, 1, [0, 0], [10, 10], -1, 0)
 
     call clearmatches()
 
-    for mark in a:all_marks
-        let a:bytes = col([mark[1], mark[2]])
-        let a:ma = matchaddpos('exttag', [[mark[1], mark[2]]])
+    for indexes in a:all_tags
+        let a:bytes = col(indexes[0])
+        let a:ma = matchaddpos('exttag', [indexes[0]])
+        let a:bytes = col(indexes[1])
+        let a:ma = matchaddpos('exttag', [indexes[1]])
     endfor
-    call timer_start(50, 'Testexttag')
+    call timer_start(100, 'Testexttag')
 endfunction
 
 nnoremap <silent> <leader>tt :call timer_start(1, 'Testexttag')<cr>

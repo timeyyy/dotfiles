@@ -7,54 +7,45 @@ endif
 " No sounds when esc in WSL (Windows Subsystem for Linux)
 set visualbell
 
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
-if dein#load_state(expand('~/.cache/dein'))
-  call dein#begin(expand('~/.cache/dein'))
-  call dein#add('Shougo/dein.vim')
-  call dein#add('Shougo/deoplete.nvim')    " completion
-  " call dein#add('zchee/deoplete-jedi')     " python completion with jedi
-  call dein#add('ervandew/supertab')       " Tab works better in cli
-  call dein#add('neomake/neomake')      " syntax checking
-  call dein#add('mhinz/vim-grepper')       " async grepping
-  call dein#add('907th/vim-auto-save')
-  call dein#add('tpope/vim-fugitive')        " git
-  call dein#add('tpope/vim-unimpaired')      " complementary pair of bracket mappings
-  call dein#add('junegunn/fzf', {'build': './install', 'merged': 0})
-  call dein#add('junegunn/fzf.vim')        " fuzzy finder
-  call dein#add('tpope/vim-commentary')    " commenting
-  call dein#add('tpope/vim-repeat')
-  call dein#add('justinmk/vim-sneak')    " s{char}{char} -> go places
-  call dein#add('justinmk/vim-dirvish')    " directory navigator
-  call dein#add('ludovicchabant/vim-gutentags') " tags
-  call dein#add('kopischke/vim-fetch')      " go to col/line from interpreters etc
-  call dein#add('junegunn/gv.vim')        " commit viewer
-  call dein#add('majutsushi/tagbar')
-  call dein#add('zah/nim.vim') " nim
-  call dein#add('garyburd/neols')
-  call dein#add('garyburd/lua-client')
-  call dein#add('timeyyy/bubbletrouble.symphony')
-  call dein#add('mhinz/vim-startify')     " cool start screen
-  call dein#local('~/Documents/git', {}, ['orchestra.nvim', 'clackclack.symphony'])
-  call dein#add('vim-airline/vim-airline') " status bar, slows vim alot
-  call dein#add('wlangstroth/vim-racket')
-  call dein#add('jdonaldson/neovaxe') " Haxe CAUSUES BUGS TODO
-  call dein#add('guns/vim-clojure-static')
-  call dein#add('tpope/vim-fireplace')
-  call dein#add('luochen1990/rainbow')
-  " call dein#add('vim-scripts/SyntaxRange')
-  " call dein#add('SirVer/ultisnips')
-  " call dein#add('honza/vim-snippets')
-  " call dein#add('tpope/vim-surround')      " s motion for surround
-  " call dein#add('tpope/vim-abolish')     " transforming word forms
-  " call dein#add('janko-m/vim-test')        " testing
-  call dein#add('floobits/floobits-neovim') " collaborative editing
-  " call dein#add('joeytwiddle/sexy_scroller.vim') being gay with terminal
-  " call dein#add('maksimr/vim-translator')
-  " call dein#add('xolox/vim-misc')          " Required for sessions
-  " call dein#add('xolox/vim-session')       " Sessions TODO erroring..
-  call dein#end()
-  call dein#save_state()
-endif
+call plug#begin('~/.cache/plugged')
+Plug 'Shougo/deoplete.nvim'    " completion
+Plug 'ervandew/supertab'       " Tab works better in cli
+Plug 'neomake/neomake'      " syntax checking
+Plug 'mhinz/vim-grepper'       " async grepping
+Plug '907th/vim-auto-save'
+Plug 'tpope/vim-fugitive'        " git
+Plug 'tpope/vim-unimpaired'      " complementary pair of bracket mappings
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'        " fuzzy finder
+Plug 'tpope/vim-commentary'    " commenting
+Plug 'tpope/vim-repeat'
+Plug 'justinmk/vim-sneak'    " s{char}{char} -> go places
+Plug 'justinmk/vim-dirvish'    " directory navigator
+Plug 'ludovicchabant/vim-gutentags' " tags
+Plug 'kopischke/vim-fetch'      " go to col/line from interpreters etc
+Plug 'junegunn/gv.vim'        " commit viewer
+Plug 'majutsushi/tagbar'
+Plug 'zah/nim.vim' " nim
+Plug 'garyburd/neols'
+Plug 'garyburd/lua-client'
+Plug 'timeyyy/bubbletrouble.symphony'
+Plug 'mhinz/vim-startify'     " cool start screen
+" call dein#local('~/Documents/git', {}, ['orchestra.nvim', 'clackclack.symphony'])
+Plug 'vim-airline/vim-airline' " status bar, slows vim alot
+Plug 'wlangstroth/vim-racket'
+Plug 'jdonaldson/neovaxe' " Haxe CAUSUES BUGS TODO
+Plug 'guns/vim-clojure-static'
+Plug 'tpope/vim-fireplace'
+Plug 'luochen1990/rainbow'
+Plug 'floobits/floobits-neovim' " collaborative editing
+" Plug 'vim-scripts/SyntaxRange'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
+" Plug 'tpope/vim-surround'      " s motion for surround
+" Plug 'tpope/vim-abolish'     " transforming word forms
+" Plug 'janko-m/vim-test'        " testing
+" Plug 'joeytwiddle/sexy_scroller.vim' being gay with terminal
+call plug#end()
 " "}}}
 " 1 Plugin Settings "{{{
 let g:rainbow_active = 1
